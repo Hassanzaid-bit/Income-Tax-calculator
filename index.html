@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="calculator">
+        <h2>Income Tax - PAYE Calculator</h2>
+        <form method="POST" >
+            <div class="form-group">
+                <label for="Gross-salary">Salary</label>
+                <input type="text" class="form-control" id="Gross-salary"  placeholder="Enter your Gross salary" pattern="^[\d,]+$">
+            </div>
+            <div class="second-row">
+                <div class="form-group pay-select-form">
+                    <label for="pay-period">Select Pay Period</label>
+                    <select class="form-control" id="pay-period">
+                      <option value="Month">Month</option>
+                      <option value="Year">Year</option>
+                    </select>
+                </div>
+                <div class="form-group pay-period-form">
+                    <label for="pay-period">Select Tax Rate</label>
+                    <select class="form-control" id="pay-period">
+                        <option value="2021">2021 Rate</option>
+                        <option value="2020-1">2020(Jan-March)</option>
+                        <option value="2020-2">2020(April-Dec)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="third-row">
+                <div class="form-group pay-period-form">
+                    <label for="pay-period">Select NSSF Rate</label>
+                    <select class="form-control" id="nssf-rate" disabled>
+                            <option value="New Rate">New Rate(6%)</option>
+                            <option value="Old Rate">Old Rate(KHS 200)</option>
+                    </select>
+                </div>
+                <div class="deduct">
+                    <div class="form-check nhif-checkbox">
+                        <input class="form-check-input" type="checkbox" value="false"  id="nssf-checkbox">
+                        <label class="form-check-label" for="nssf-checkbox">
+                          Deduct NSSF
+                        </label>
+                    </div>
+                    <div class="form-check nhif-checkbox">
+                        <input class="form-check-input" type="checkbox" value="false" id="nhif">
+                        <label class="form-check-label" for="nhif">
+                          Deduct NHIF
+                        </label>
+                    </div>
+                </div>
+              
+            </div>
+
+            <button type="button" class="btn btn-secondary" id="calculateButton">Calculate</button>
+          </form>
+
+          <div class="results">
+            <div class="result-detail">
+                <h4>Taaxable Income</h4>
+                <span>Ksh.</span><span id="taxable-income-el"> 0.00</span>
+            </div>
+            <div class="result-detail">
+                <h4>Personal Relief</h4>
+                <span>Ksh.</span><span id="personal-relief-el">0.00</span>
+            </div>
+            <div class="result-detail">
+                <h4>Taax Before Relief</h4>
+                <span>Ksh.</span><span id="tax-before-relief-el">0.00</span>
+            </div>
+            <div class="result-detail">
+                <h4>PAYEE</h4>
+                <span>Ksh.</span><span id="paye-el"> 0.00</span>
+            </div>
+            <div class="result-detail">
+                <h4>NSSF Contribution</h4>
+                <span>Ksh.</span><span id="nssf-el"> 0.00</span>
+            </div>
+            <div class="result-detail">
+                <h4>NHIF Contribution</h4>
+                <span>Ksh.</span><span id="nhif-el"> 0.00</span>
+            </div>    
+            <div class="netpay-container">
+                <h4><span class="netpay">NET PAY</span> <span>Ksh.</span><span id="net-pay-el"> 0.00</span> </h4>
+             
+            </div>   
+          </div>
+    </div>
+
+</body>
+</html>
