@@ -66,7 +66,7 @@ window.onload = function () {
         var taxableIncomeEl = document.getElementById("taxable-income-el")
 
         document.getElementById('Gross-salary').addEventListener('input', event =>
-            event.target.value = (parseInt(event.target.value.replace(/[^\d]+/gi, '')) || 0)
+            event.target.value = (parseInt(event.target.value.replace(/[^\d]+/gi, '')) )
             );
     
       
@@ -81,9 +81,11 @@ window.onload = function () {
             }
         })
 
+        console.log(document.getElementById("nssf-rate").value)
+
         
         document.getElementById('Gross-salary').addEventListener('input', event =>
-            event.target.value = (parseInt(event.target.value.replace(/[^\d]+/gi, '')) || 0).toLocaleString('en-US')
+            event.target.value = (parseInt(event.target.value.replace(/[^\d]+/gi, '')) || "").toLocaleString('en-US')
             );
         
        
@@ -101,8 +103,19 @@ window.onload = function () {
             nhifAmount = nhifCheckbox.checked ? calculateNhif(Amount) : 0 ;
             nhifEl.innerHTML = nhifAmount.toLocaleString()
 
-            nssfAmount = nssf ? calculateNssf(Amount) : 0 ;
+            if(nssf){
+                if(document.getElementById("nssf-rate").value === "New Rate"){
+                    nssfAmount = calculateNssf(Amount)
+                }else{
+                    nssfAmount = 200
+                }
+            }else{
+                nssfAmount = 0
+            }
+
             nssfEl.innerHTML = nssfAmount.toLocaleString()
+
+
 
             taxableIncome = Amount - nssfAmount;
             taxableIncomeEl.innerHTML = taxableIncome.toLocaleString();
